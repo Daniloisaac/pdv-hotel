@@ -1,0 +1,61 @@
+version: '3.9'
+services:
+  frontend:
+    image: node:16.14-alpine
+
+    working_dir: /front-hotel
+    restart: on-failure
+
+    stdin_open: true
+    tty: true
+
+    command: npm start
+
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+    volumes:
+      - ./frontend:/front-hotel  
+     
+  backend:
+    image: node:16.14-alpine
+
+    working_dir: /back-hotel
+    restart: on-failure  
+
+    stdin_open: true
+    tty: true
+
+    command: npm run dev
+
+    environment:
+      - PORT=3001
+      - JWT_SECRET=secret_jwt
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_HOST=db
+      - DB_PORT=3306
+
+    ports: 
+      - "3001:3001"
+
+    depends_on:
+      - db  
+
+    volumes:
+      - ./backend:/back-hotel
+
+  db:
+    image: mysql:8.0.21
+
+    restart: on-failure
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+
+    ports:
+      - 3306:3306
+
+    
