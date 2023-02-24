@@ -1,6 +1,7 @@
 import express from 'express';
 import login from './infra/routes/user.routes';
 import client from './infra/routes/client.routes'
+import reserver from './infra/routes/reservation.routes'
 
 
 class App {
@@ -15,6 +16,7 @@ class App {
     this.app.get('/', (req, res) => res.json({ ok: true }));
     this.app.use('/login', login);
     this.app.use('/client', client);
+    this.app.use('/reserver', reserver);
 
 
   }
