@@ -6,7 +6,7 @@ import Client from './client';
 
 export default class Reservations extends Model {
   declare id:number;
-  declare dataCheckin: Date;
+  declare dateChecking: Date;
   declare dateCheckout: Date;
   declare roomNumber: number;
   declare numberPeople: number;
@@ -21,7 +21,6 @@ Reservations.init({
     type: DataTypes.INTEGER,
   },
   clientId: {
-    allowNull: false,
     type: DataTypes.INTEGER,
     references: {
       model: 'clients',
@@ -29,7 +28,7 @@ Reservations.init({
   },
 },
 
-  dataCheckin: {
+  dateChecking: {
     type: DataTypes.DATE
   },
   dateCheckout: {
