@@ -24,7 +24,7 @@ export default class UserCase {
 
   public async login(entity: Pick<User, "email" | "password">): Promise<any> {
     if(!entity.email || !entity.password)
-      return { messagemError: "Os campos não podem ser vazios" };
+      return { messageError: "Os campos não podem ser vazios" };
     
     return await this.repository.login(entity)
   }
