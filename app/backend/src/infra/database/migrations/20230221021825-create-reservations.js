@@ -10,14 +10,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       client_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'clients',
           key:'id',
         },
       },
-      data_checkin: {
+      date_checking: {
         type: Sequelize.DATE
       },
       date_checkout: {
