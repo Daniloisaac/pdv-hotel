@@ -1,5 +1,6 @@
 import express from 'express';
 import login from './infra/routes/user.routes';
+import client from './infra/routes/client.routes'
 
 
 class App {
@@ -13,6 +14,7 @@ class App {
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
     this.app.use('/login', login);
+    this.app.use('/client', client);
 
 
   }
